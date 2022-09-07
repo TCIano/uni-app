@@ -33,14 +33,15 @@
         <view class="floor-img-box">
           <!-- 左侧大图片的盒子 -->
           <view class="left-img-box">
-            <image class="left-img" :src="item.product_list[0].image_src"
-              :style="{width: item.product_list[0].image_width + 'rpx'}">
+            <image @click="toGoodsList(item.product_list[0].navigator_url)" class="left-img"
+              :src="item.product_list[0].image_src" :style="{width: item.product_list[0].image_width + 'rpx'}">
             </image>
             <!-- 右侧 4 个小图片的盒子 -->
           </view>
           <view class="right-img-box">
             <view class="right-img-item" v-for="(item2, i2) in item.product_list" :key="i2" v-if="i2 !== 0">
-              <image class="image" :src="item2.image_src" mode="widthFix" :style="{width: item2.image_width + 'rpx'}">
+              <image @click="toGoodsList(item2.navigator_url)" class="image" :src="item2.image_src" mode="widthFix"
+                :style="{width: item2.image_width + 'rpx'}">
               </image>
             </view>
           </view>
@@ -68,7 +69,7 @@
     methods: {
       async getBanners() {
         const res = await getBannersApi()
-        console.log(res)
+        // console.log(res)
         this.swiperList = res.message
       },
       //跳转商品详情页面
@@ -80,7 +81,7 @@
       //获取导航栏
       async getNavs() {
         const res = await getNavsApi()
-        console.log(res)
+        // console.log(res)
         this.navList = res.message
       },
       //跳转导航页面
@@ -94,9 +95,17 @@
       //获取楼层列表
       async getFloor() {
         const res = await getFloorApi()
-        console.log(res)
+        // console.log(res)
         this.floorList = res.message
+      },
+      //跳转到商品列表
+      toGoodsList(url) {
+        // console.log(url, url.split('?')[1])
+        uni.navigateTo({
+          url: "/subpkg/goods_list/goods_list?" + url.split('?')[1]
+        })
       }
+
     },
     onLoad() {
       this.getBanners()
