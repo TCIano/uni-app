@@ -39,6 +39,17 @@
         }
     ],
     
+    "subPackages": [
+      {
+        "root": "subpkg",
+        "pages": [
+          {
+            "path": "goods_detail/goods_detail"
+          }
+        ]
+      }
+    ],
+    
     "tabBar": {
       "selectedColor": "#c00000",
       "list": [
@@ -70,7 +81,7 @@
     },
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "首页",
+		"navigationBarTitleText": "品优购",
 		"navigationBarBackgroundColor": "#c00000",
 		"backgroundColor": "#F8F8F8"
 	},
